@@ -8,6 +8,7 @@ import {
   ShieldCheck,
   Network,
   Megaphone,
+  Briefcase,
   User,
   Share2,
   Check,
@@ -340,6 +341,13 @@ const areas = [
     accentColor: '#FB7185',
     icon: Megaphone,
     message: 'Feliz Día del Hombre a marketing: gracias por su creatividad, energía y empeño para darle voz e identidad a Overskull y conectar lo que hacemos con el mundo.'
+  },
+  {
+    id: 'gestion',
+    name: 'Gestión',
+    accentColor: '#EAB308',
+    icon: Briefcase,
+    message: 'Feliz Día del Hombre a gestión: gracias por su criterio, organización y acompañamiento para ordenar prioridades, destrabar avances y mantener el rumbo del equipo.'
   }
 ]
 
@@ -350,6 +358,11 @@ const activeArea = computed(() => {
 
 // --- 3. FONDO MONOCROMÁTICO CON CÓDIGOS Y TOKENS REALES (Denso y Abundante) ---
 const codeTokens = [
+  { text: 'sprint_ok', area: 'gestion' },
+  { text: 'milestone_done', area: 'gestion' },
+  { text: 'roadmap_sync', area: 'gestion' },
+  { text: 'scope_clear', area: 'gestion' },
+  { text: 'backlog_groomed', area: 'gestion' },
   { text: 'git push origin main', area: 'programadores' },
   { text: 'QA_APPROVED', area: 'qa' },
   { text: '200 OK', area: 'programadores' },
@@ -874,6 +887,43 @@ const copyPersonalizedLink = async () => {
                   <path d="M 148 35 C 172 55, 172 95, 148 115" stroke="#FB7185" stroke-width="2" stroke-linecap="round" fill="none" opacity="0.5" />
                   <!-- Destellos de impacto -->
                   <polygon points="172,40 176,46 182,48 176,50 172,56 168,50 162,48 168,46" fill="#FB7185" />
+                </svg>
+
+                <!-- GESTIÓN (#EAB308): Tablero Kanban geométrico, planificación y nodos de milestone -->
+                <svg v-else-if="activeArea.id === 'gestion'" class="w-full h-full" viewBox="0 0 200 150" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <!-- Tablero / Marco exterior de planificación -->
+                  <rect x="25" y="20" width="150" height="110" rx="8" fill="#EAB308" fill-opacity="0.07" stroke="#EAB308" stroke-width="1.75" />
+                  <!-- Columnas de Kanban -->
+                  <line x1="75" y1="20" x2="75" y2="130" stroke="#EAB308" stroke-width="1.25" stroke-dasharray="3 3" opacity="0.4" />
+                  <line x1="125" y1="20" x2="125" y2="130" stroke="#EAB308" stroke-width="1.25" stroke-dasharray="3 3" opacity="0.4" />
+                  <!-- Encabezados de columnas -->
+                  <rect x="33" y="28" width="34" height="6" rx="2" fill="#EAB308" opacity="0.75" />
+                  <rect x="83" y="28" width="34" height="6" rx="2" fill="#EAB308" opacity="0.75" />
+                  <rect x="133" y="28" width="34" height="6" rx="2" fill="#EAB308" opacity="0.75" />
+                  <!-- Tarjetas en Columna 1 (Backlog / Ideas) -->
+                  <rect x="33" y="40" width="34" height="20" rx="4" fill="#EAB308" fill-opacity="0.15" stroke="#EAB308" stroke-width="1.25" />
+                  <line x1="39" y1="48" x2="57" y2="48" stroke="#EAB308" stroke-width="1.5" stroke-linecap="round" />
+                  <line x1="39" y1="54" x2="50" y2="54" stroke="#EAB308" stroke-width="1.5" stroke-linecap="round" opacity="0.6" />
+                  <rect x="33" y="66" width="34" height="22" rx="4" fill="#EAB308" fill-opacity="0.15" stroke="#EAB308" stroke-width="1.25" />
+                  <line x1="39" y1="75" x2="60" y2="75" stroke="#EAB308" stroke-width="1.5" stroke-linecap="round" />
+                  <line x1="39" y1="81" x2="52" y2="81" stroke="#EAB308" stroke-width="1.5" stroke-linecap="round" opacity="0.6" />
+                  <!-- Tarjetas en Columna 2 (En progreso / Sprint) -->
+                  <rect x="83" y="40" width="34" height="32" rx="4" fill="#EAB308" fill-opacity="0.2" stroke="#EAB308" stroke-width="1.5" />
+                  <line x1="89" y1="49" x2="110" y2="49" stroke="#EAB308" stroke-width="1.5" stroke-linecap="round" />
+                  <line x1="89" y1="56" x2="103" y2="56" stroke="#EAB308" stroke-width="1.5" stroke-linecap="round" opacity="0.7" />
+                  <!-- Barra de progreso miniatura en tarjeta -->
+                  <rect x="89" y="63" width="22" height="3" rx="1.5" fill="#EAB308" fill-opacity="0.3" />
+                  <rect x="89" y="63" width="15" height="3" rx="1.5" fill="#EAB308" />
+                  <!-- Tarjetas en Columna 3 (Completadas / Milestones) -->
+                  <rect x="133" y="40" width="34" height="22" rx="4" fill="#EAB308" fill-opacity="0.25" stroke="#EAB308" stroke-width="1.25" />
+                  <polyline points="143,51 147,55 157,45" stroke="#EAB308" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" />
+                  <rect x="133" y="68" width="34" height="22" rx="4" fill="#EAB308" fill-opacity="0.25" stroke="#EAB308" stroke-width="1.25" />
+                  <polyline points="143,79 147,83 157,73" stroke="#EAB308" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" />
+                  <!-- Nodos de Roadmap / Timeline en la base -->
+                  <line x1="35" y1="114" x2="165" y2="114" stroke="#EAB308" stroke-width="1.5" opacity="0.5" />
+                  <circle cx="50" cy="114" r="3.5" fill="#EAB308" />
+                  <circle cx="100" cy="114" r="4.5" fill="#EAB308" stroke="#172536" stroke-width="1.5" />
+                  <circle cx="150" cy="114" r="3.5" fill="#EAB308" />
                 </svg>
 
               </div>
